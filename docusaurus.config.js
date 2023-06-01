@@ -63,8 +63,30 @@ const config = {
         // },
         items: [
           {
+            type: 'dropdown', // 下拉
+            sidebarId: 'fragmentation',
+            position: 'right',
+            label: '碎片化',
+            items: [
+              {
+                to: '/docs/碎片化/2023/JS存储',
+                label: '2023'
+              },
+              {
+                to: '/docs/碎片化/2024/敬请期待',
+                label: '2024'
+              }
+            ]
+          },
+          {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'webBase',
+            position: 'right',
+            label: '前端基础',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'notes',
             position: 'right',
             label: '笔记',
           },
