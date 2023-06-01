@@ -69,7 +69,7 @@ const config = {
             label: '笔记',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/Angel020102',
             label: 'GitHub',
             position: 'right',
           },

@@ -1,4 +1,11 @@
-## 有关入口文件main.js
+---
+title: Vue3基础学习
+sidebar_label: Vue3基础学习
+sidebar_position: 1
+---
+## Vue3
+
+### 有关入口文件main.js
  - 在Vue3中不再引入Vue构造函数,引入的是createApp工厂函数
 ```js
   import { createApp } from 'vue'
@@ -23,7 +30,7 @@
   vm.$mount('#App')
 ```
 
-## template中可以不再需要根标签
+### template中可以不再需要根标签
 ```js
 <template>
     <img alt="Vue logo" src="./assets/logo.png" />
@@ -31,9 +38,9 @@
 </template>
 ```
 
-## 常用 Composition(组合式) API
+### 常用 Composition(组合式) API
 
-#### 新增的配置项 setup
+###### 新增的配置项 setup
 
 - setup函数的两中返回值:
   - 若返回一个对象,则对象中的属性,方法在模版中可以直接使用(常用) 
@@ -70,9 +77,9 @@
     - 如果Vue2中的配置项和Vue3中的setup发生重名,会以setup优先
   2. setup不能是一个async函数,因为返回值不再是return对象而是一个promise,模版中是看不到return对象中的属性
 
-## Vue3中ref函数
+### Vue3中ref函数
 
-#### 处理_基本数据类型
+###### 处理_基本数据类型
  ```js
   <h1>这是一段测试</h1>
   // 此时name,age应该是name.value,age.value但是呢 会自动添加value
@@ -100,7 +107,7 @@
   }
  ```
 
-#### 处理_基本对象类型
+###### 处理_基本对象类型
 
   ```js
   <h5>工作种类:{{ job.type }}</h5>
@@ -126,7 +133,7 @@
 
   ```
 
-#### 总结
+###### 总结
 
 - ref 用来定义响应式数据
   ```js
@@ -142,7 +149,7 @@
   - 对象类型:借助Vue3中的新函数 - reactive函数
     - 将proxy封装在一个reactive函数中
 
-## Vue3中reactive函数
+### Vue3中reactive函数
 
 - 处理对象
   ```js
@@ -236,7 +243,7 @@
     }
   }
   ```
-#### 总结 reactive函数
+###### 总结 reactive函数
 - 定义一个对象类型的响应式数据(基本数据不能用,ref函数)
   ```js
     // 语法
@@ -246,7 +253,7 @@
 - reactive定义的响应式是深层的
 - 内部通过ES6proxy实现,通过代理对象操作原对象内部的数据
 
-## Vue2中的响应式
+### Vue2中的响应式
 - 实现原理
   - 对象类型:通过Object.defineProperty()对属性的读取,修改进行拦截(数据劫持)
   - 数组类型:通过重写更新数组的一系列方法来实现拦截(对数组的变更方法进行了包裹)
@@ -260,7 +267,7 @@
   - 新增属性或删除属性,页面不会更新
   - 直接通过下标修改数组,界面不会自动更新
 
-## Vue3中的响应式
+### Vue3中的响应式
 - 实现原理
   - 通过Proxy(代理):拦截对象中任意属性的变化,包括:属性的读写,属性的添加,属性的删除
   - 通过Reflect(反射):对被代理的属性进行操作
@@ -280,7 +287,7 @@
   }
   })
   ```
-## Vue中的响应原理
+### Vue中的响应原理
 
 - 原数据
   ```js
@@ -382,7 +389,7 @@
   }
   ```
 
-## reactive和ref对比
+### reactive和ref对比
 - 定义数据角度对比
   - ref用来定义:**基本数据类型**
   - reactive用来定义:**对象(或数组)类型**
@@ -394,7 +401,7 @@
   - ref定义的数据:操作数据需要.value,读取数据时模版中直接读取不需要.value
   - reactive定义的数据:操作数据与读取数据,均不需要.value
 
-## setup的注意点
+### setup的注意点
 - setup执行时机
   - 在beforeCreate之前执行一次,this是undefined
   ```js
@@ -479,7 +486,7 @@
 </script>
   ```
 
-## computed函数
+### computed函数
 - 与Vue2中的computed功能一致
   ```js
   姓: <input type="text" v-model="person.firstName">
@@ -517,7 +524,7 @@
   }
   ```
 
-## watch函数
+### watch函数
 - 与vue2中的watch功能一致
   ```js
   // 模版
@@ -630,7 +637,7 @@
   }
   ```
 
-## watchEffect函数
+### watchEffect函数
 
 - watch:既要指明监听的属性,也要指明监听的回调
 - watchEffect:不需要指明监听那个属性,监视的回调函数用到了那个,就会监听那个属性
@@ -663,7 +670,7 @@
     }
   }
   ```
-## Vue3中的生命周期钩子
+### Vue3中的生命周期钩子
 - beforeDestroy 改为 beforeUnmounted
 - destroy 改为 unmounted
 - 提供了CompositionAPI形式的生命钩子
@@ -675,7 +682,7 @@
   ```
 - 了解: 配置项的生命周期在CompositionAPI钩子函数前执行
 
-## hook
+### hook
 
 - hook本质是一个函数,把setup 函数中使用的CompositionAPI进行封装
 - 自定义hook的优势:复用代码,让setup中的逻辑清楚易懂
@@ -702,7 +709,7 @@
 
   ```
 
-## toRef和toRefs
+### toRef和toRefs
 - 创建一个ref对象,其Value值指向另一个对象中的某个属性
 - const name  =  toRef(person,'name')
 - 要将响应式对象中的某个属性单独提供给外部使用
@@ -717,7 +724,7 @@
     }
   ```
 
-## shallowRecative和shallowRef
+### shallowRecative和shallowRef
 
 - shallowReactive: 只处理对象最外层属性的响应式(浅响应式)
 - shallowRef: 只处理基本数据类型的响应式,不进行对象响应式的处理
@@ -787,7 +794,7 @@ export default {
 </script>
 ```
 
-## readonly和shallowReadonly
+### readonly和shallowReadonly
 
 - readonly: 让一个响应式数据变为只读的(深只读)
 - shallowReadonly: 让一个响应式数据变为只读的(浅只读)
@@ -817,7 +824,7 @@ import { ref, reactive, toRefs, readonly, shallowReadonly } from 'vue'
   }
 ```
 
-## toRaw与markRaw
+### toRaw与markRaw
 
 - toRaw
   - 作用: 将一个由reactive生成的响应式对象转为普通对象
@@ -844,7 +851,7 @@ import { ref, reactive, toRefs, readonly, shallowReadonly } from 'vue'
   person.car = markRaw({ name: '奔驰', price: 40 })
   ```
 
-## customRef 
+### customRef 
 
 - 创建一个自定义的Ref,并对其依赖项和更新触发进行显式控制
 ```javascript
@@ -888,7 +895,7 @@ export default {
 }
 ```
 
-## reactive和inject
+### reactive和inject
 
 - 实现祖孙组件之间通信
 - 父组件通过provide选项来提供,后代组件有一个inject选项来开始使用
@@ -904,7 +911,7 @@ setup() {
 }
 ```
 
-## 响应式数据的判断
+### 响应式数据的判断
 
 - isRef: 检查一个值是否为ref对象
 - isReactive: 检查一个对象是否由reactive创建的响应式代理
@@ -932,20 +939,20 @@ export default {
 
 ```
 
-## Options API 存在的问题 以及Composition API 的优势
+### Options API 存在的问题 以及Composition API 的优势
 
 - 使用传统的OptionsAPI,新增或者修改一个需求,就需要分别在data,methods,computed里面修改
 - 通过CompositionAPI我们可以优雅的组织我们代码,函数,更加有序
 
-## 新的组件
+### 新的组件
 
-#### Fragment
+###### Fragment
 
 - 在Vue2中,组件必须有一个根标签
 - 在Vue3中,组件可以没有根标签,内部会将多个标签包含在一个Fragment的虚拟元素
 - 好处: 减少标签层级,减少内存占用
 
-#### Teleport
+###### Teleport
 
 - Teleport 是一种能将我们的组件html结构移动到指定的位置技术
 ```javascript
@@ -963,7 +970,7 @@ export default {
 </teleport>
 ```
 
-#### Suspense
+###### Suspense
 
 - 等待异步组件时渲染一些额外的内容，让用户有更好的体验
 ```javascript
@@ -1001,9 +1008,9 @@ export default {
   }
 }
 ```
-## 其他
+### 其他
 
-#### 全局API的转移
+###### 全局API的转移
 - Vue2中的全局API和配置
 ```javascript
 // 注册全局组件
@@ -1032,7 +1039,7 @@ Vue.directive('focus',{
 | Vue.use                  | app.use                     |
 | Vue.prototype            | app.config.globalProperties |
 
-#### 其他改变
+###### 其他改变
 
 - data选项应该始终被声明为一个函数
 - 过度类名的改变

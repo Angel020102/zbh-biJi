@@ -1,6 +1,6 @@
 ---
-title: Vue2基础语法
-sidebar_label: Vue2基础语法
+title: Vue2基础学习
+sidebar_label: Vue2基础学习
 sidebar_position: 1
 ---
 ## Vue2
