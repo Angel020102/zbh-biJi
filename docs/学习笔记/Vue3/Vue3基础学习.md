@@ -3,7 +3,6 @@ title: Vue3基础学习
 sidebar_label: Vue3基础学习
 sidebar_position: 1
 ---
-## Vue3
 
 ### 有关入口文件main.js
  - 在Vue3中不再引入Vue构造函数,引入的是createApp工厂函数

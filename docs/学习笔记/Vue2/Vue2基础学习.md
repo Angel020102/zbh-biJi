@@ -3,7 +3,6 @@ title: Vue2基础学习
 sidebar_label: Vue2基础学习
 sidebar_position: 1
 ---
-## Vue2
 
 ### MVVM设计模式
 - model
